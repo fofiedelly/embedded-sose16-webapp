@@ -1,0 +1,20 @@
+<div class="col-md-6 col-md-offset-3">
+  <h3 class="text-center">Login or <a ui-sref="Register">Register</a></h3>
+  <form>
+    <div class="input-group top-buffer">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <input type="text" class="form-control" name="username"
+        placeholder="username" ng-model="login.username"></input>
+    </div>
+    <span class="help-block"></span>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <input type="password" class="form-control" name="password"
+        placeholder="Password" ng-model="login.password"></input>
+    </div>
+    <span class="help-block"></span>
+
+
+    <button ng-click="login.login()" class="btn btn-primary btn-lg  btn-block">Login</button>
+  </form>
+</div>

@@ -1,0 +1,13 @@
+@import 'vars';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
+@import '../../node_modules/font-awesome/scss/font-awesome';
+@import '../../node_modules/angular-chart.js/dist/angular-chart';
+@import 'spaces';
+@import 'alignment';
+
+body {
+  font-family: Helvetica, sans-serif;
+  color: $font-color--dark;
+  padding: $half-space;
+  padding-top: $body-top-space;
+}
