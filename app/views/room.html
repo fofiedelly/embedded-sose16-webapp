@@ -1,0 +1,14 @@
+<h2 ng-Show="ctrl.room.name">{{ ctrl.room.name }}</h2>
+<h2 ng-Hide="ctrl.room.name">{{ ctrl.room.roomId }}</h2>
+<div class="row" ng-repeat="device in ctrl.devices">
+  <div class="col-md-10">
+
+    <a ng-Show="device.name" ui-sref="Rooms.Room.device({roomId: ctrl.room.roomId, deviceId: device.deviceId})">{{ device.name }}</a>
+    <a ng-Hide="device.name" ui-sref="Rooms.Room.device({roomId: ctrl.room.roomId, deviceId: device.deviceId})">{{ device.deviceId }}</a>
+
+    <!-- <input type="text" ng-Model="room.temp" class="form-control" id="temp" placeholder="Temp"> -->
+
+    <!-- <button type="submit" ng-click="rooms.sendTemp(room.roomId, room.temp)" class="btn btn-default">Send</button> -->
+
+  </div>
+</div>

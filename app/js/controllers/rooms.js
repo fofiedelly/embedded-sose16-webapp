@@ -14,16 +14,7 @@ function RoomsCtrl($http, AppSettings) {
 
   vm.getRooms();
 
-  vm.sendTemp = function(roomId, temp) {
-    $http.post(AppSettings.apiUrl + '/command', {
-      targetServer: roomId,
-      targetDevice: 'heating',
-      type: 'S',
-      value: temp
-    }).success(function(result, status, headers) {
-      console.log(result);
-    });
-  }
+
 
 }
 

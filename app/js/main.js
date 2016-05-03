@@ -9,6 +9,7 @@ require('angular-spinner');
 require('wu');
 require('angular-chart.js');
 require('lodash');
+require('angular-breadcrumb')
 
 // angular modules
 import constants from './constants';
@@ -37,7 +38,8 @@ const requires = [
   'ui.bootstrap',
   'picardy.fontawesome',
   'angularSpinner',
-  'chart.js'
+  'chart.js',
+  'ncy-angular-breadcrumb'
 ];
 
 // mount on window for testing

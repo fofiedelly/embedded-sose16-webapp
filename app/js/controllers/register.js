@@ -5,7 +5,7 @@ function RegisterCtrl($http, $rootScope, $location, TokenStorage, AppSettings) {
   const vm = this;
 
   vm.register = function() {
-    $http.post(AppSettings.apiUrl + '/api/users/add', {
+    $http.post(AppSettings.apiUrl + '/api/register', {
       username: vm.username,
       password: vm.password
     }).success(function(result, status, headers) {
