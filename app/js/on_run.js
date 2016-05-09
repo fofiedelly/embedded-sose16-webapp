@@ -1,5 +1,7 @@
-function OnRun($rootScope, AppSettings) {
+function OnRun($rootScope, AppSettings, $animate) {
   'ngInject';
+
+  // $animate.enabled(true);
 
   // change page title based on state
   $rootScope.$on('$stateChangeSuccess', (event, toState) => {

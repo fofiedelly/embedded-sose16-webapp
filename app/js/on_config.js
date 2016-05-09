@@ -16,6 +16,9 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $httpPr
           templateUrl: 'navigation.html'
         }
       },
+      ncyBreadcrumb: {
+        skip: true
+      },
       title: 'Home'
 
 
@@ -78,6 +81,9 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $httpPr
           templateUrl: 'login.html'
         }
       },
+      ncyBreadcrumb: {
+        skip: true
+      },
       title: 'Login'
 
 
@@ -88,6 +94,9 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $httpPr
           controller: 'RegisterCtrl as register',
           templateUrl: 'register.html'
         }
+      },
+      ncyBreadcrumb: {
+        skip: true
       },
       title: 'Register'
     });

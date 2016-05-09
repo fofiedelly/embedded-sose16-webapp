@@ -9,7 +9,8 @@ require('angular-spinner');
 require('wu');
 require('angular-chart.js');
 require('lodash');
-require('angular-breadcrumb')
+require('angular-breadcrumb');
+require('../../node_modules/ng-stomp/dist/ng-stomp.standalone.min.js');
 
 // angular modules
 import constants from './constants';
@@ -39,7 +40,8 @@ const requires = [
   'picardy.fontawesome',
   'angularSpinner',
   'chart.js',
-  'ncy-angular-breadcrumb'
+  'ncy-angular-breadcrumb',
+  'ngStomp'
 ];
 
 // mount on window for testing

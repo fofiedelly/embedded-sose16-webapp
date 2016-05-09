@@ -1,4 +1,4 @@
-function DeviceCtrl($stateParams, $http, AppSettings) {
+function DeviceCtrl($stateParams, $http, AppSettings, $stomp, $scope) {
   'ngInject';
 
   // ViewModel
@@ -6,7 +6,8 @@ function DeviceCtrl($stateParams, $http, AppSettings) {
   var roomId = $stateParams.roomId;
   var deviceId = $stateParams.deviceId;
   vm.device = {};
-  vm.currentTemp = 20;
+  vm.newTemp;
+
 
   vm.getDevice = function() {
     $http.get(AppSettings.apiUrl + '/api/rooms/' + roomId + '/devices/' + deviceId).success(function(result, status, headers) {
@@ -22,18 +23,34 @@ function DeviceCtrl($stateParams, $http, AppSettings) {
     });
   }
 
-  vm.sendTemp = function(value) {
-    $http.post(AppSettings.apiUrl + '/api/rooms/' + roomId + '/devices/' + deviceId + '/command', {
-      type: 'SET',
-      value: value
+  vm.sendTemp = function() {
+    $http.patch(AppSettings.apiUrl + '/api/rooms/' + roomId + '/devices/' + deviceId, {
+      targetValue: vm.newTemp
     }).success(function(result, status, headers) {
-      console.log(result);
-      
+      vm.device = result;
+      vm.newTemp = '';
+
     });
   }
 
+  $stomp
+    .connect(AppSettings.apiUrl + '/backend').then(function(frame) {
+      console.log('connection established to backend!')
+
+      var subscription = $stomp.subscribe('/rooms/' + roomId + '/devices/' + deviceId, function(payload, headers, res) {
+        $scope.$apply(function() {
+          vm.device = payload;
+        })
+      })
+
+    }).catch(function(err) {
+      console.log(err);
+    })
+
+
   vm.getRoom();
   vm.getDevice();
+
 }
 
 export default {
