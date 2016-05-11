@@ -14,10 +14,24 @@ function RoomCtrl($stateParams, $http, AppSettings) {
     });
   }
 
+  var fillupRoom = function(room) {
+    vm.room = room;
+    vm.room.displayname = vm.room.name ? vm.room.name : vm.room.roomId;
+  }
+
+  vm.updateName = function() {
+    $http.patch(AppSettings.apiUrl + '/api/rooms/' + id, {
+      name: vm.room.name
+    }).success(function(result, status, headers) {
+      // vm.room = result;
+      fillupRoom(result);
+    });
+  }
+
   vm.getRoom = function() {
     $http.get(AppSettings.apiUrl + '/api/rooms/' + id).success(function(result, status, headers) {
-      vm.room = result;
-      console.log(vm.room);
+      // vm.room = result;
+      fillupRoom(result);
     });
   }
   vm.getRoom();

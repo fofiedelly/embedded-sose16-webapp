@@ -1,15 +1,7 @@
-<!-- <h2>Rooms</h2>
-<div class="row" ng-repeat="room in rooms.rooms">
-  <div ngShow="room.name" class="col-md-8"><a><h3>{{ room.name }}</h3></a></div>
-  <div ngHide="room.name" class="col-md-8"><a><h3>{{ room.roomId }}</h3></a></div>
-</div> -->
-
 <h2>Rooms</h2>
 <div class="row" ng-repeat="room in rooms.rooms">
-  <div class="col-md-10">
-
+  <div class="col-md-12">
     <a ng-Show="room.name" ui-sref="Rooms.Room({roomId: room.roomId})">{{ room.name }}</a>
     <a ng-Hide="room.name" ui-sref="Rooms.Room({roomId: room.roomId})">{{ room.roomId }}</a>
-
   </div>
 </div>

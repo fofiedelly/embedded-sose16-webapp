@@ -11,9 +11,8 @@ function LoginCtrl($http, TokenStorage, $rootScope, $location, AppSettings) {
       if (user.username !== 'anonymousUser') {
         vm.authenticated = true;
         vm.username = user.username;
+        $rootScope.user = user;
 
-        // For display purposes only
-        vm.token = JSON.parse(atob(TokenStorage.retrieve().split('.')[0]));
       }
     });
   };
@@ -22,8 +21,9 @@ function LoginCtrl($http, TokenStorage, $rootScope, $location, AppSettings) {
     $http.post(AppSettings.apiUrl + '/api/login', {
       username: vm.username,
       password: vm.password
-    }).success(function(result, status, headers) {
+    }).success(function(user, status, headers) {
       $rootScope.authenticated = true;
+      $rootScope.user = user;
       TokenStorage.store(headers('X-AUTH-TOKEN'));
 
       // For display purposes only
@@ -32,7 +32,7 @@ function LoginCtrl($http, TokenStorage, $rootScope, $location, AppSettings) {
       $location.path('/');
     });
   };
-
+  vm.init();
 
 
 }

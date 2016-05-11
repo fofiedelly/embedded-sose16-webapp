@@ -11,6 +11,8 @@ require('angular-chart.js');
 require('lodash');
 require('angular-breadcrumb');
 require('../../node_modules/ng-stomp/dist/ng-stomp.standalone.min.js');
+require('angularjs-slider');
+require('angular-xeditable');
 
 // angular modules
 import constants from './constants';
@@ -41,7 +43,9 @@ const requires = [
   'angularSpinner',
   'chart.js',
   'ncy-angular-breadcrumb',
-  'ngStomp'
+  'ngStomp',
+  'rzModule',
+  'xeditable'
 ];
 
 // mount on window for testing

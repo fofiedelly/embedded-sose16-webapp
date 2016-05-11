@@ -50,7 +50,7 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $httpPr
         }
       },
       ncyBreadcrumb: {
-        label: '{{ ctrl.room.name }}'
+        label: '{{ ctrl.room.displayname }}'
       },
       title: 'Home'
 
@@ -68,7 +68,7 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $httpPr
         }
       },
       ncyBreadcrumb: {
-        label: '{{ ctrl.device.name }}'
+        label: '{{ ctrl.device.displayname }}'
       },
       title: 'Home'
 

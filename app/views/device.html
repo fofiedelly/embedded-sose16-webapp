@@ -1,22 +1,14 @@
-<h2 ng-Show="ctrl.device.name">{{ ctrl.device.name }}</h2>
-<h2 ng-Hide="ctrl.device.name">{{ ctrl.device.deviceId }}</h2>
-
-<div class="row">
-  <div class="col-sm-2">
-    <input type="text" ng-Model="ctrl.newTemp" class="form-control" id="temp" placeholder="Temp">
+<div class="row" ng-cloak>
+  <div class="col-sm-12">
+    <h2 ng-Show="ctrl.device.name" editable-text="ctrl.device.name" onaftersave="ctrl.updateName()">{{ ctrl.device.name }}</h2>
+    <h2 ng-Hide="ctrl.device.name" editable-text="ctrl.device.name" onaftersave="ctrl.updateName()">{{ ctrl.device.deviceId }}</h2>
+    <ul class="list-inline">
+      <li animate-on-change='ctrl.device.value | number : 1' animation-class='animated pulse' direction="true" postfix=" °C">{{ ctrl.device.value | number : 1 }}°C</li>
+    </ul>
   </div>
-  <div class="col-sm-1">
-    <button type="submit" ng-click="ctrl.sendTemp()" class="btn btn-primary">SET</button>
-  </div>
-  <div class="col-sm-4 v-align">
-    <span class="v-align">
-      <ul class="list-inline">
-        <li>target</li>
-        <li>{{ ctrl.device.targetValue | number : 1  }}°C</li>
-        <li></li>
-        <li>current</li>
-        <li animate-on-change='ctrl.device.value | number : 1' animation-class='animated pulse'>{{ ctrl.device.value | number : 1 }}°C</li>
-      </ul>
-       </span>
+</div>
+<div class="row top-buffer-sm" ng-cloak>
+  <div class="col-sm-12">
+    <rzslider ng-cloak rz-slider-model="ctrl.device.targetValue" rz-slider-options="ctrl.slider.options"></rzslider>
   </div>
 </div>

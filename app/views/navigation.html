@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
   <div class="container">
 
@@ -21,6 +21,8 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">
+          <!-- {{ navigation.user.username }}</a></li> -->
         <li ng-show="!navigation.authenticated()"><a ui-sref="Login">login</a></li>
         <li ng-show="navigation.authenticated()"><a href="" ng-click="navigation.logout()">logout</a></li>
       </ul>
