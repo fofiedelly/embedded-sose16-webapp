@@ -13,6 +13,7 @@ require('angular-breadcrumb');
 require('../../node_modules/ng-stomp/dist/ng-stomp.standalone.min.js');
 require('angularjs-slider');
 require('angular-xeditable');
+require('angular-ui-switch');
 
 // angular modules
 import constants from './constants';
@@ -45,7 +46,8 @@ const requires = [
   'ncy-angular-breadcrumb',
   'ngStomp',
   'rzModule',
-  'xeditable'
+  'xeditable',
+  'uiSwitch'
 ];
 
 // mount on window for testing

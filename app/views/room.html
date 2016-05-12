@@ -3,7 +3,7 @@
 
 <div class="row" ng-repeat="device in ctrl.devices">
   <div class="col-md-10">
-    <a ng-Show="device.name" ui-sref="Rooms.Room.device({roomId: ctrl.room.roomId, deviceId: device.deviceId})">{{ device.name }}</a>
-    <a ng-Hide="device.name" ui-sref="Rooms.Room.device({roomId: ctrl.room.roomId, deviceId: device.deviceId})">{{ device.deviceId }}</a>
+    <a ng-Show="device.name" ui-sref="Rooms.Room.device.{{ device.type }}({roomId: ctrl.room.roomId, deviceId: device.deviceId, device: device})">{{ device.name }}</a>
+    <a ng-Hide="device.name" ui-sref="Rooms.Room.device.{{ device.type }}({roomId: ctrl.room.roomId, deviceId: device.deviceId, device: device})">{{ device.deviceId }}</a>
 </div>
 </div>

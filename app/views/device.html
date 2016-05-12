@@ -2,13 +2,7 @@
   <div class="col-sm-12">
     <h2 ng-Show="ctrl.device.name" editable-text="ctrl.device.name" onaftersave="ctrl.updateName()">{{ ctrl.device.name }}</h2>
     <h2 ng-Hide="ctrl.device.name" editable-text="ctrl.device.name" onaftersave="ctrl.updateName()">{{ ctrl.device.deviceId }}</h2>
-    <ul class="list-inline">
-      <li animate-on-change='ctrl.device.value | number : 1' animation-class='animated pulse' direction="true" postfix=" °C">{{ ctrl.device.value | number : 1 }}°C</li>
-    </ul>
   </div>
 </div>
-<div class="row top-buffer-sm" ng-cloak>
-  <div class="col-sm-12">
-    <rzslider ng-cloak rz-slider-model="ctrl.device.targetValue" rz-slider-options="ctrl.slider.options"></rzslider>
-  </div>
-</div>
+
+<div ui-view="device"></div>

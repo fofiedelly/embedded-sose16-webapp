@@ -8,24 +8,6 @@ function DeviceCtrl($stateParams, $http, AppSettings, $stomp, $scope) {
   vm.value = 20;
   vm.device = {};
 
-  vm.slider = {
-    id: 'slider-id',
-    value: 20,
-    options: {
-      floor: 15,
-      showTicks: true,
-      hideLimitLabels: false,
-      onEnd: function(id) {
-        vm.sendTemp()
-      },
-      ceil: 30,
-      translate: function(value, sliderId, label) {
-        return value + '°C'
-
-      }
-    }
-  };
-
   var fillupDevice = function(device) {
     vm.device = device;
     vm.device.displayname = vm.device.name ? vm.device.name : vm.device.deviceId;
@@ -38,24 +20,20 @@ function DeviceCtrl($stateParams, $http, AppSettings, $stomp, $scope) {
 
   vm.getDevice = function() {
     $http.get(AppSettings.apiUrl + '/api/rooms/' + roomId + '/devices/' + deviceId).success(function(result, status, headers) {
-      // vm.device = result;
       fillupDevice(result);
-      // vm.slider.options.showSelectionBarFromValue = vm.device.value;
     });
   }
 
   vm.getRoom = function() {
     $http.get(AppSettings.apiUrl + '/api/rooms/' + roomId).success(function(result, status, headers) {
-      // vm.room = result;
       fillupRoom(result);
     });
   }
 
-  vm.sendTemp = function() {
+  vm.sendValue = function() {
     $http.patch(AppSettings.apiUrl + '/api/rooms/' + roomId + '/devices/' + deviceId, {
       targetValue: vm.device.targetValue
     }).success(function(result, status, headers) {
-      // vm.device = result;
       fillupDevice(result);
     });
   }
@@ -64,7 +42,6 @@ function DeviceCtrl($stateParams, $http, AppSettings, $stomp, $scope) {
     $http.patch(AppSettings.apiUrl + '/api/rooms/' + roomId + '/devices/' + deviceId, {
       name: vm.device.name
     }).success(function(result, status, headers) {
-      // vm.device = result;
       fillupDevice(result);
     });
   }
@@ -75,9 +52,7 @@ function DeviceCtrl($stateParams, $http, AppSettings, $stomp, $scope) {
 
       var subscription = $stomp.subscribe('/rooms/' + roomId + '/devices/' + deviceId, function(payload, headers, res) {
         $scope.$apply(function() {
-          // vm.device = payload;
           fillupDevice(payload);
-          // vm.slider.options.showSelectionBarFromValue = vm.device.value;
         })
       })
 

@@ -1,29 +1,35 @@
 .content {
-    /* start 'enter' transition */
-    &.ng-enter {
-        /* transition on enter for .5s */
-        transition: 1.0s;
-
-        /* start with opacity 0 (invisible) */
-        opacity: 0;
-    }
-
-    /* end 'enter' transition */
-    &.ng-enter-active {
-        /* end with opacity 1 (fade in) */
-        opacity: 1;
-    }
+  /* start 'enter' transition */
+  &.ng-enter {
+    /* transition on enter for .5s */
+    transition: 1.0s;
+    /* start with opacity 0 (invisible) */
+    opacity: 0;
+  }
+  /* end 'enter' transition */
+  &.ng-enter-active {
+    /* end with opacity 1 (fade in) */
+    opacity: 1;
+  }
 }
+.update-state {
+  /* start 'enter' transition */
+  &.ng-hide-add {
+    animation: 1.5s fadeOut;
+  }
+  /* end 'enter' transition */
+  &.ng-hide-remove {
+    animation: 1.5s fadeIn;
+  }
 
+}
 @keyframes pulse {
   from {
     transform: scale3d(1, 1, 1);
   }
-
   50% {
     transform: scale3d(1.2, 1.2, 1.2);
   }
-
   to {
     transform: scale3d(1, 1, 1);
   }

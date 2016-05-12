@@ -73,6 +73,50 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $httpPr
       title: 'Home'
 
 
+    }).state('Rooms.Room.device.HEATING', {
+      url: '/heating',
+      params: {
+        'device': null
+      },
+      views: {
+        'device': {
+          controller: 'HeatingCtrl as heatingCtrl',
+          templateUrl: 'heatingDevice.html',
+          resolve: {
+            name: ['$stateParams', function($stateParams) {
+              return $stateParams.device;
+            }]
+          }
+        }
+      },
+      ncyBreadcrumb: {
+        skip: true
+      },
+      title: 'Home'
+
+
+    }).state('Rooms.Room.device.SWITCH', {
+      url: '/switch',
+      params: {
+        'device': null
+      },
+      views: {
+        'device': {
+          controller: 'SwitchCtrl as switchCtrl',
+          templateUrl: 'switchDevice.html',
+          resolve: {
+            name: ['$stateParams', function($stateParams) {
+              return $stateParams.device;
+            }]
+          }
+        }
+      },
+      ncyBreadcrumb: {
+        skip: true
+      },
+      title: 'Home'
+
+
     }).state('Login', {
       url: '/login',
       views: {

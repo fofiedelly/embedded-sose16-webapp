@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="list-inline">
+      <li animate-on-change='ctrl.device.value | number : 1' animation-class='animated pulse' direction="true" postfix=" °C">{{ ctrl.device.value | number : 1 }}°C</li>
+    </ul>
+  </div>
+</div>
+<div class="row top-buffer-sm" ng-cloak>
+  <div class="col-sm-12">
+    <rzslider ng-cloak rz-slider-model="heatingCtrl.device.targetValue" rz-slider-options="heatingCtrl.slider.options"></rzslider>
+  </div>
+</div>
