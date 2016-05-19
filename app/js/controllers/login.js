@@ -1,4 +1,4 @@
-function LoginCtrl($http, TokenStorage, $rootScope, $location, AppSettings) {
+function LoginCtrl($http, TokenStorage, $rootScope, $location, AppSettings, SecurityService, $scope) {
   'ngInject';
 
   // ViewModel
@@ -18,21 +18,31 @@ function LoginCtrl($http, TokenStorage, $rootScope, $location, AppSettings) {
   };
 
   vm.login = function() {
-    $http.post(AppSettings.apiUrl + '/api/login', {
-      username: vm.username,
-      password: vm.password
-    }).success(function(user, status, headers) {
-      $rootScope.authenticated = true;
-      $rootScope.user = user;
-      TokenStorage.store(headers('X-AUTH-TOKEN'));
+    SecurityService.login(vm.username, vm.password).then((user) => {
+      $scope.$apply(function() {
+        $location.path('/');
+      })
 
-      // For display purposes only
-      vm.token = JSON.parse(atob(TokenStorage.retrieve().split('.')[0]));
-      console.log(vm.token);
-      $location.path('/');
-    });
+    })
+
+
+
+
+    // $http.post(AppSettings.apiUrl + '/api/login', {
+    //   username: vm.username,
+    //   password: vm.password
+    // }).success(function(user, status, headers) {
+    //   $rootScope.authenticated = true;
+    //   $rootScope.user = user;
+    //   TokenStorage.store(headers('X-AUTH-TOKEN'));
+    //
+    //   $location.path('/');
+    // });
   };
-  vm.init();
+
+
+
+  // vm.init();
 
 
 }

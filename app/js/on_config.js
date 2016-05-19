@@ -4,25 +4,26 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $httpPr
   $locationProvider.html5Mode(true);
 
   $stateProvider
-    .state('Home', {
-      url: '/',
-      views: {
-        'content': {
-          controller: 'ExampleCtrl as home',
-          templateUrl: 'home.html'
-        },
-        'navigation': {
-          controller: 'NavigationCtrl as navigation',
-          templateUrl: 'navigation.html'
-        }
-      },
-      ncyBreadcrumb: {
-        skip: true
-      },
-      title: 'Home'
-
-
-    }).state('Rooms', {
+    // .state('Home', {
+    //   url: '/',
+    //   views: {
+    //     'content': {
+    //       controller: 'ExampleCtrl as home',
+    //       templateUrl: 'home.html'
+    //     },
+    //     'navigation': {
+    //       controller: 'NavigationCtrl as navigation',
+    //       templateUrl: 'navigation.html'
+    //     }
+    //   },
+    //   ncyBreadcrumb: {
+    //     skip: true
+    //   },
+    //   title: 'Home'
+    //
+    //
+    // })
+    .state('Rooms', {
       url: '/rooms',
       views: {
         'content': {
@@ -145,9 +146,7 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $httpPr
       title: 'Register'
     });
 
-  $urlRouterProvider.otherwise('/');
-
-
+  $urlRouterProvider.otherwise('/rooms');
 
   $httpProvider.interceptors.push('TokenAuthInterceptor');
 

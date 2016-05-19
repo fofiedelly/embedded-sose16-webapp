@@ -1,7 +1,13 @@
 <h2>Rooms</h2>
-<div class="row" ng-repeat="room in rooms.rooms">
+<div class="row" ng-repeat="room in rooms.rooms | orderBy : 'name'">
   <div class="col-md-12">
-    <a ng-Show="room.name" ui-sref="Rooms.Room({roomId: room.roomId})">{{ room.name }}</a>
-    <a ng-Hide="room.name" ui-sref="Rooms.Room({roomId: room.roomId})">{{ room.roomId }}</a>
+    <a ng-Show="room.name" ui-sref="Rooms.Room({roomId: room.roomId})">
+       {{ room.name }}</a>
+    <a ng-Hide="room.name" ui-sref="Rooms.Room({roomId: room.roomId})">
+       {{ room.roomId }}</a>
+    <!-- <p>3 devices</p> -->
+
   </div>
+
 </div>
+<p ng-Show="rooms.rooms.length==0"><em>No rooms to show</em></p>

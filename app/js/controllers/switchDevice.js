@@ -10,7 +10,7 @@ function SwitchCtrl($stateParams, $http, AppSettings, $timeout) {
 
   vm.updateValue = function() {
     $http.patch(AppSettings.apiUrl + '/api/rooms/' + roomId + '/devices/' + deviceId, {
-      targetValue: vm.enabled ? 1 : 0
+      targetValue: vm.enabled ? 1 : 2
     }).success(function(result, status, headers) {
       console.log(result.targetValue);
 

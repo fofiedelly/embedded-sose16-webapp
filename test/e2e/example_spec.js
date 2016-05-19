@@ -13,9 +13,9 @@ describe('E2E: Example', function() {
     expect(browser.getLocationAbsUrl()).toMatch('/');
   });
 
-  it('should show the number defined in the controller', function() {
-    var element = browser.findElement(by.css('.number-example'));
-    expect(element.getText()).toEqual('1234');
-  });
+  // it('should show the number defined in the controller', function() {
+  //   var element = browser.findElement(by.css('.number-example'));
+  //   expect(element.getText()).toEqual('1234');
+  // });
 
 });

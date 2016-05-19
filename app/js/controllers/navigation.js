@@ -6,17 +6,21 @@ function NavigationCtrl(AppSettings, $location, TokenStorage, $rootScope, $http,
 
   vm.brand = AppSettings.appTitle;
 
-  // SecurityService.getUser().then(user => {
-  //   $scope.$apply(function() {
-  //     vm.user = user;
-  //   });
-  // });
+  SecurityService.getUser().then(user => {
+    $scope.$apply(function() {
+      vm.user = user;
+    });
+  });
 
   vm.logout = function() {
     // Just clear the local storage
-    TokenStorage.clear();
-    $rootScope.authenticated = false;
-    $location.path('/login');
+    SecurityService.logout().then(() => {
+      $scope.$apply(function() {
+        $rootScope.authenticated = false;
+        $location.path('/login');
+      });
+    });
+
   };
 
   vm.authenticated = function() {
