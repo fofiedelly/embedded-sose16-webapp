@@ -1,4 +1,4 @@
-function DeviceCtrl($stateParams, $http, AppSettings, $stomp, $scope) {
+function DeviceCtrl($stateParams, $http, AppSettings, $scope) {
   'ngInject';
 
   // ViewModel
@@ -30,13 +30,6 @@ function DeviceCtrl($stateParams, $http, AppSettings, $stomp, $scope) {
     });
   }
 
-  vm.sendValue = function() {
-    $http.patch(AppSettings.apiUrl + '/api/rooms/' + roomId + '/devices/' + deviceId, {
-      targetValue: vm.device.targetValue
-    }).success(function(result, status, headers) {
-      fillupDevice(result);
-    });
-  }
 
   vm.updateName = function() {
     $http.patch(AppSettings.apiUrl + '/api/rooms/' + roomId + '/devices/' + deviceId, {
@@ -46,19 +39,7 @@ function DeviceCtrl($stateParams, $http, AppSettings, $stomp, $scope) {
     });
   }
 
-  $stomp
-    .connect(AppSettings.apiUrl + '/backend').then(function(frame) {
-      console.log('connection established to backend!')
 
-      var subscription = $stomp.subscribe('/rooms/' + roomId + '/devices/' + deviceId, function(payload, headers, res) {
-        $scope.$apply(function() {
-          fillupDevice(payload);
-        })
-      })
-
-    }).catch(function(err) {
-      console.log(err);
-    })
 
 
   vm.getRoom();

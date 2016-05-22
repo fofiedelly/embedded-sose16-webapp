@@ -35,6 +35,7 @@
     "angular-resource": "^1.5.0",
     "angular-spinner": "^0.8.0",
     "angular-spring-data-rest": "^0.4.4",
+    "angular-toasty": "^1.0.5",
     "angular-ui-bootstrap": "^1.1.2",
     "angular-ui-router": "^0.2.13",
     "angular-ui-switch": "^0.1.1",
