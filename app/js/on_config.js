@@ -1,7 +1,17 @@
-function OnConfig(toastyConfigProvider, $stateProvider, $locationProvider, $urlRouterProvider, $httpProvider) {
+function OnConfig(toastyConfigProvider, $stateProvider, $locationProvider, $urlRouterProvider, $httpProvider, ChartJsProvider) {
   'ngInject';
 
   $locationProvider.html5Mode(true);
+
+  ChartJsProvider.setOptions({
+    // colours: ['#0db9f0', '#CCCCCC'],
+    // responsive: false
+    datasetFill: true,
+    showXLabels: 10,
+    // animationEasing : 'easeOutBounce',
+    // animationSteps : 50
+
+  });
 
   $stateProvider
   // .state('Home', {

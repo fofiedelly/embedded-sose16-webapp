@@ -1,7 +1,7 @@
 <h2 ng-Show="ctrl.room.name" editable-text="ctrl.room.name" onaftersave="ctrl.updateName()">{{ ctrl.room.name }}</h2>
 <h2 ng-Hide="ctrl.room.name" editable-text="ctrl.room.name" onaftersave="ctrl.updateName()">{{ ctrl.room.roomId }}</h2>
 
-<div class="row" ng-repeat="device in ctrl.devices | orderBy : 'name'">
+<div class="row animate" ng-repeat="device in ctrl.devices | orderBy : 'name'">
   <div class="col-md-10">
     <a ng-Show="device.name" ui-sref="Rooms.Room.device.{{ device.type }}({roomId: ctrl.room.roomId, deviceId: device.deviceId, device: device})">{{ device.name  | TruncateFilter:false:55:'...' }}</a>
     <a ng-Hide="device.name" ui-sref="Rooms.Room.device.{{ device.type }}({roomId: ctrl.room.roomId, deviceId: device.deviceId, device: device})"><fa ng-Show="device.type == 'HEATING'" name="square"></fa><fa ng-Show="device.type == 'SWITCH'" name="toggle-on"></fa> {{ device.deviceId | TruncateFilter:false:55:'...' }}</a>

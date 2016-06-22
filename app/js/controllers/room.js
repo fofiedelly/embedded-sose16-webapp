@@ -1,4 +1,4 @@
-function RoomCtrl($stateParams, $http, AppSettings) {
+function RoomCtrl($stateParams, $http, AppSettings, $stomp, $scope, $rootScope, toasty) {
   'ngInject';
 
   // ViewModel
@@ -13,6 +13,31 @@ function RoomCtrl($stateParams, $http, AppSettings) {
       console.log(vm.devices);
     });
   }
+
+  $stomp
+    .connect(AppSettings.apiUrl + '/backend').then(function(frame) {
+      console.log('connection established to backend')
+
+      var subscription = $stomp.subscribe('/rooms/' + id + '/devices', function(payload, headers, res) {
+        $scope.$apply(function() {
+          vm.devices.push(payload);
+        })
+      })
+
+
+      var userSubscription = $stomp.subscribe('/' + $rootScope.user.username, function(payload, headers, res) {
+        $scope.$apply(function() {
+          toasty.info({
+            title: payload.title,
+            msg: payload.message
+          });
+
+        })
+      })
+
+    }).catch(function(err) {
+      console.log(err);
+    })
 
   var fillupRoom = function(room) {
     vm.room = room;

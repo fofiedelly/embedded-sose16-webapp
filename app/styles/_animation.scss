@@ -1,28 +1,9 @@
-.content {
-  /* start 'enter' transition */
+.animate {
   &.ng-enter {
-    /* transition on enter for .5s */
-    transition: 1.0s;
-    /* start with opacity 0 (invisible) */
-    opacity: 0;
-  }
-  /* end 'enter' transition */
-  &.ng-enter-active {
-    /* end with opacity 1 (fade in) */
-    opacity: 1;
+    animation: fadeIn 1.5s;
   }
 }
-.update-state {
-  /* start 'enter' transition */
-  &.ng-hide-add {
-    animation: 1.5s fadeOut;
-  }
-  /* end 'enter' transition */
-  &.ng-hide-remove {
-    animation: 1.5s fadeIn;
-  }
 
-}
 @keyframes pulse {
   from {
     transform: scale3d(1, 1, 1);
@@ -32,5 +13,32 @@
   }
   to {
     transform: scale3d(1, 1, 1);
+  }
+}
+.navbar-animate {
+  &.ng-enter,
+  &.ng-enter nav,
+  &.ng-leave,
+  &.ng-leave nav {
+    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+  }
+
+  &.ng-enter-active,
+  &.ng-enter-active nav,
+  &.ng-leave,
+  &.ng-leave nav {
+    opacity: 1;
+    top: 0;
+  }
+  &.ng-enter,
+  &.ng-enter nav,
+  &.ng-leave-active,
+  &.ng-leave-active nav {
+    opacity: 0;
+    top: -50px;
   }
 }

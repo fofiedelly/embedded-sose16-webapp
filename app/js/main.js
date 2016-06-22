@@ -9,12 +9,15 @@ require('angular-spinner');
 require('wu');
 require('angular-chart.js');
 require('lodash');
+require('lodash-math');
 require('angular-breadcrumb');
 require('../../node_modules/ng-stomp/dist/ng-stomp.standalone.min.js');
 require('angularjs-slider');
 require('angular-xeditable');
 require('angular-ui-switch');
 require('../../node_modules/angular-toasty/dist/angular-toasty.js');
+require('chart.js');
+require('angular-chart.js');
 
 // angular modules
 import constants from './constants';
@@ -49,7 +52,8 @@ const requires = [
   'rzModule',
   'xeditable',
   'uiSwitch',
-  'angular-toasty'
+  'angular-toasty',
+  'chart.js'
 ];
 
 // mount on window for testing

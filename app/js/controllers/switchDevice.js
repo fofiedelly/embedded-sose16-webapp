@@ -1,4 +1,4 @@
-function SwitchCtrl($stateParams, $http, AppSettings, $timeout, toasty, $stomp, $scope) {
+function SwitchCtrl($stateParams, $http, AppSettings, $timeout, toasty, $stomp, $scope, $rootScope) {
   'ngInject';
 
   // ViewModel
@@ -23,7 +23,10 @@ function SwitchCtrl($stateParams, $http, AppSettings, $timeout, toasty, $stomp, 
 
     });
   }
-
+  var fillupDevice = function(device) {
+    vm.device = device;
+    vm.device.displayname = vm.device.name ? vm.device.name : vm.device.deviceId;
+  }
 
   var checkResponse = function() {
     if (vm.device.targetValueOnDevice != vm.device.targetValue) {
@@ -31,7 +34,7 @@ function SwitchCtrl($stateParams, $http, AppSettings, $timeout, toasty, $stomp, 
         title: "Device offline",
         msg: "Device " + vm.device.name + " could not be reached!"
       });
-    }else{
+    } else {
       toasty.success({
         title: "Value changed",
         msg: "Value on device " + vm.device.name + " changed!"
@@ -47,6 +50,16 @@ function SwitchCtrl($stateParams, $http, AppSettings, $timeout, toasty, $stomp, 
         $scope.$apply(function() {
           console.log(payload);
           fillupDevice(payload);
+        })
+      })
+
+      var userSubscription = $stomp.subscribe('/' + $rootScope.user.username, function(payload, headers, res) {
+        $scope.$apply(function() {
+          toasty.info({
+            title: payload.title,
+            msg: payload.message
+          });
+
         })
       })
 

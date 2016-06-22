@@ -1,5 +1,5 @@
 <h2>Rooms</h2>
-<div class="row" ng-repeat="room in rooms.rooms | orderBy : 'name'">
+<div class="row animate" ng-repeat="room in rooms.rooms | orderBy : 'name'">
   <div class="col-md-12">
     <a ng-Show="room.name" ui-sref="Rooms.Room({roomId: room.roomId})">
        {{ room.name }}</a>

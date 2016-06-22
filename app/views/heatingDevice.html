@@ -1,12 +1,18 @@
 <div class="row">
   <div class="col-sm-12">
     <ul class="list-inline">
-      <li animate-on-change='ctrl.device.value | number : 1' animation-class='animated pulse' direction="true" postfix=" °C">{{ ctrl.device.value | number : 1 }}°C</li>
+      <li style="font-size: 18px;" animate-on-change='heatingCtrl.device.value | number : 1' animation-class='animated pulse' direction="true" postfix=" °C">{{ heatingCtrl.device.value | number : 1 }}°C</li>
     </ul>
   </div>
 </div>
 <div class="row top-buffer-sm" ng-cloak>
   <div class="col-sm-12">
     <rzslider ng-cloak rz-slider-model="heatingCtrl.device.targetValue" rz-slider-options="heatingCtrl.slider.options"></rzslider>
+  </div>
+</div>
+<div class="row top-buffer hidden-xs">
+  <div class="col-sm-12">
+    <h3>Temperature Curve <small>({{ ctrl.room.name }})</small></h3>
+    <canvas id="line" class="chart chart-line" chart-options="heatingCtrl.options" chart-dataset-override="heatingCtrl.datasetOverride" chart-data="heatingCtrl.data" chart-labels="heatingCtrl.labels" chart-legend="false" chart-series="heatingCtrl.series" chart-click="decksCtrl.onClick"></canvas>
   </div>
 </div>

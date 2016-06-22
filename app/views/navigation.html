@@ -10,7 +10,8 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" ui-sref="Rooms"><fa name="lightbulb-o"></fa> {{ navigation.brand }}</a>
+      <a class="navbar-brand" ui-sref="Rooms">
+        <fa name="lightbulb-o"></fa> {{ navigation.brand }}</a>
 
     </div>
 
@@ -20,10 +21,11 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">
-          <!-- {{ navigation.user.username }}</a></li> -->
-        <li ng-show="!navigation.authenticated()"><a ui-sref="Login">login</a></li>
-        <li ng-show="navigation.authenticated()"><a href="" ng-click="navigation.logout()">logout</a></li>
+        <li>
+          <a href="#">
+            <!-- {{ navigation.user.username }}</a></li> -->
+            <li ng-show="!navigation.authenticated()"><a ui-sref="Login">login</a></li>
+            <li ng-show="navigation.authenticated()"><a href="" ng-click="navigation.logout()">logout</a></li>
       </ul>
     </div>
   </div>
