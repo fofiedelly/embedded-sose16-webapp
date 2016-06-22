@@ -12,10 +12,19 @@
 @import 'alignment';
 @import 'animation';
 @import 'typography';
-
 body {
   font-family: Helvetica, sans-serif;
   color: $font-color--dark;
   padding: $half-space;
-  padding-top: $body-top-space;
+  // padding-top: $body-top-space;
+}
+@media screen and (max-width: 767px) {
+  body {
+    padding-top: $body-top-space / 2;
+  }
+}
+@media screen and (min-width: 768px) {
+  body {
+    padding-top: $body-top-space;
+  }
 }
