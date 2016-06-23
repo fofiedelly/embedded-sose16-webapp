@@ -89,6 +89,7 @@
     "lodash": "^4.6.1",
     "lodash-math": "0.0.7",
     "merge-stream": "^1.0.0",
+    "n3-charts": "^2.0.27",
     "ng-stomp": "^0.2.0",
     "pretty-hrtime": "^1.0.1",
     "run-sequence": "^1.1.5",
