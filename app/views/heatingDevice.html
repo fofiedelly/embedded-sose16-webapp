@@ -13,6 +13,11 @@
 <div class="row top-buffer hidden-xs">
   <div class="col-sm-12">
     <h3>Temperature Curve <small>({{ ctrl.room.name }})</small></h3>
-    <canvas id="line" class="chart chart-line" chart-options="heatingCtrl.options" chart-dataset-override="heatingCtrl.datasetOverride" chart-data="heatingCtrl.data" chart-labels="heatingCtrl.labels" chart-legend="false" chart-series="heatingCtrl.series" chart-click="decksCtrl.onClick"></canvas>
+    <!-- <canvas id="line" class="chart chart-line" chart-options="heatingCtrl.options" chart-dataset-override="heatingCtrl.datasetOverride" chart-data="heatingCtrl.data" chart-labels="heatingCtrl.labels" chart-legend="false" chart-series="heatingCtrl.series" chart-click="decksCtrl.onClick"></canvas> -->
+
+    <div class="chart-container top-buffer-sm">
+      <linechart data="heatingCtrl.cdata" options="heatingCtrl.coptions"></linechart>
+    </div>
+
   </div>
 </div>

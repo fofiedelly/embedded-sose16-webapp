@@ -7,11 +7,13 @@
 @import '../../node_modules/angular-xeditable/dist/css/xeditable';
 @import '../../node_modules/angular-ui-switch/angular-ui-switch';
 @import '../../node_modules/angular-toasty/dist/angular-toasty';
+@import '../../node_modules/n3-charts/build/LineChart';
 @import 'switchCustomization';
 @import 'spaces';
 @import 'alignment';
 @import 'animation';
 @import 'typography';
+@import 'n3-chart';
 body {
   font-family: Helvetica, sans-serif;
   color: $font-color--dark;

@@ -22,7 +22,7 @@ function HeatingCtrl($http, AppSettings, $stateParams, $timeout, toasty, $stomp,
       onEnd: function(id) {
         vm.sendTemp()
       },
-      ceil: 30,
+      ceil: 50,
       translate: function(value, sliderId, label) {
         return value + '°C'
 
@@ -90,10 +90,27 @@ function HeatingCtrl($http, AppSettings, $stateParams, $timeout, toasty, $stomp,
 
       vm.data = [_.map(timeRange, x => meanOfTimeRange(x, 'value')), _.map(timeRange, x => modeOfTimeRange(x, 'targetValue'))]
 
+      vm.cdata = {
+        current: _.map(result, x => {
+          return {
+            value: _.ceil(x.value, 1),
+            timestamp: new Date(x.timestamp)
+          }
+        }),
+        target: _.map(result, x => {
+          return {
+            targetValue: x.targetValue,
+            timestamp: new Date(x.timestamp)
+          }
+        })
+
+      }
+      console.log(vm.cdata)
+
     });
   }
   getTimestamps()
-  $interval(getTimestamps, 10000)
+  $interval(getTimestamps, 5000)
 
   // vm.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
   vm.options = {
@@ -167,6 +184,76 @@ function HeatingCtrl($http, AppSettings, $stateParams, $timeout, toasty, $stomp,
     vm.device = device;
     vm.device.displayname = vm.device.name ? vm.device.name : vm.device.deviceId;
   }
+
+  vm.cdata = {
+    current: [],
+    target: []
+  };
+
+
+
+  vm.coptions = {
+    margin: {
+      top: 20
+    },
+    series: [{
+      axis: "y",
+      dataset: "current",
+      striped: true,
+      key: "value",
+      label: "Current temperature",
+      color: "#0db9f0",
+      type: ['line', 'area'],
+      id: "mySeries0",
+      interpolation: {
+        mode: 'linear',
+        tension: 0.4
+      }
+    }, {
+      axis: "y",
+      dataset: "target",
+      key: "targetValue",
+      label: "Target temperature",
+      color: "#999999",
+      type: ['line'],
+      id: "mySeries1"
+    }],
+    axes: {
+      x: {
+        key: "timestamp",
+        type: "date",
+        padding: {
+          min: 0,
+          max: 0
+        },
+      },
+      y: {
+        min: 0,
+        max: 50,
+        padding: {
+          min: 0,
+          max: 10
+        },
+        ticksShift: {
+          y: -5,
+          x: 10
+        },
+        tickFormat: function(value, index) {
+          return value + "°C";
+        },
+        ticksShift: {x: 0, y:0}
+      },
+    },
+    grid: {
+      x: true,
+      y: true
+    },
+    // margin: {
+    //   left: 40,
+    //   right: 40,
+    //   top:0
+    // }
+  };
 
 
 }

@@ -1,0 +1,31 @@
+.chart-container .chart .axis > .tick > text {
+  fill: $chart-color;
+}
+.chart .axis > path {
+  fill: none;
+  stroke: #eeeeee;
+  // stroke: $chart-color;
+}
+.chart-container {
+  height: 400px;
+
+}
+.chart .axis > .tick > line {
+  stroke: #ffffff;
+}
+
+.chart .axis {
+    font: 14px Helvetica;
+    shape-rendering: crispEdges;
+}
+
+.chart-legend .item {
+    cursor: pointer;
+    font-family: sans-serif;
+    height: 16px;
+    font-size: 14px;
+    font-weight: 100;
+    display: inline-block;
+    margin-right: 10px;
+    color: #55637d;
+}

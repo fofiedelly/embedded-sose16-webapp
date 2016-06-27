@@ -18,6 +18,8 @@ require('angular-ui-switch');
 require('../../node_modules/angular-toasty/dist/angular-toasty.js');
 require('chart.js');
 require('angular-chart.js');
+// require('d3');
+require('../../node_modules/n3-charts/build/LineChart.js');
 
 // angular modules
 import constants from './constants';
@@ -53,7 +55,8 @@ const requires = [
   'xeditable',
   'uiSwitch',
   'angular-toasty',
-  'chart.js'
+  'chart.js',
+  'n3-line-chart'
 ];
 
 // mount on window for testing
